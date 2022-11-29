@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message SceneTimeNotify {
+	uint32 scene_id = 1;
+	bool is_paused = 2;
+	uint64 scene_time = 3;
+}

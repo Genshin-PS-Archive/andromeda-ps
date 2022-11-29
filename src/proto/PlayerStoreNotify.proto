@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "StoreType.proto";
+import "Item.proto";
+
+message PlayerStoreNotify {
+	StoreType store_type = 1;
+	repeated Item item_list = 2;
+	uint32 weight_limit = 3;
+}

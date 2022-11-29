@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "SceneTeamAvatar.proto";
+
+message SceneTeamUpdateNotify {
+	repeated SceneTeamAvatar scene_team_avatar_list = 1;
+  // it has some more field but fuck it
+	bool is_in_mp = 3;
+}

@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+message RegionInfo {
+  string gateserver_ip = 1;
+  uint32 gateserver_port = 2;
+  string area_type = 7;
+  string resource_url = 8;
+  string data_url = 9;
+  string feedback_url = 10;
+  string bulletin_url = 11;
+  string resource_url_bak = 12;
+  string data_url_bak = 13;
+  uint32 client_data_version = 14;
+  uint32 res_version = 15;
+  string handbook_url = 16;
+  uint32 client_silence_data_version = 18;
+  string client_data_md5 = 19;
+  string client_silence_data_md5 = 20;
+  string res_md5 = 21;
+  // ResVersionConfig res_version_config = 22;
+  bytes secret_key = 23;
+}

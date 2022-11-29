@@ -1,0 +1,5 @@
+syntax = "proto3";
+
+message SceneDataNotify {
+	repeated string level_config_name_list = 1;
+}

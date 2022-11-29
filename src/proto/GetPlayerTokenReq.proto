@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+message GetPlayerTokenReq {
+  uint32 account_type = 1;
+  string account_uid = 2;
+  string account_token = 3;
+  string account_ext = 4;
+  uint32 uid = 5;
+  bool is_guest = 6;
+  uint32 platform_type = 7;
+  uint32 cloud_client_ip = 8;
+}

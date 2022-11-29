@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+message GetPlayerTokenRsp {
+  int32 retcode = 1;
+  string msg = 2;
+  uint32 uid = 3;
+  string token = 4;
+  uint32 black_uid_end_time = 5;
+  uint32 account_type = 6;
+  string account_uid = 7;
+  bool is_proficient_player = 8;
+  string secret_key = 9;
+  uint32 gm_uid = 10;
+  uint64 secret_key_seed = 11;
+}

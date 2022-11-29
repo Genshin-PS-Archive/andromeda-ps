@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+message PlayerLoginReq {
+	string token = 1;
+	string client_version = 2;
+	string system_version = 3;
+	string device_name = 4;
+	string device_uid = 5;
+	uint32 target_uid = 6;
+	uint64 login_rand = 7;
+	bool is_editor = 8;
+	string language_type = 9;
+	uint32 account_type = 10;
+	string account_uid = 11;
+	string platform = 12;
+	string device_info = 13;
+	uint32 platform_type = 14;
+	bool is_guest = 15;
+	uint32 cloud_client_ip = 16;
+	uint32 gm_uid = 17;
+}
