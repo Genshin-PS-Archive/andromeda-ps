@@ -1,8 +1,7 @@
-import enet from 'enet.js'
+import { ClientInfo } from 'enet.js'
 
-import { ClientInfo } from '../enet'
+import { player } from '../enet'
 import { Packet } from '../network/packet'
-import { encodePacket } from '../network/packet/packet.encode'
 
 export interface SceneInitFinishReq {
   enterSceneToken: number
@@ -46,10 +45,8 @@ export interface HostPlayerNotify {
 export interface AvatarEnterInfo {
   avatarGuid: any,
   avatarEntityId: number,
-  avatarAbilityInfo: {},
   weaponGuid: any,
   weaponEntityId: number,
-  weaponAbilityInfo: {}
 }
 
 export interface TeamEnterInfo {
@@ -103,20 +100,20 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Sc
   const scenePlayerInfoNotify = new Packet<ScenePlayerInfoNotify>({
     playerInfoList: [
       {
-        uid: 61,
+        uid: player.uid,
         peerId: 1,
-        name: 'andromeda',
-        sceneId: 3,
+        name: player.nickname,
+        sceneId: player.sceneId,
         onlinePlayerInfo: {
-          uid: 61,
-          nickName: 'andromeda',
+          uid: player.uid,
+          nickName: player.nickname,
         },
       }
     ]
   }, 'ScenePlayerInfoNotify')
 
   const hostPlayerNotify = new Packet<HostPlayerNotify>({
-    hostUid: 61,
+    hostUid: player.uid,
     hostPeerId: 1,
   }, 'HostPlayerNotify')
 
@@ -124,21 +121,11 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Sc
     curAvatarEntityId: 16777432,
     avatarEnterInfo: [
       {
-        avatarGuid: "2664326143951479019",
+        avatarGuid: player.avatars[1].guid,
         avatarEntityId: 16777432,
-        avatarAbilityInfo: {},
         weaponGuid: "2664326143951285785",
         weaponEntityId: 100663513,
-        weaponAbilityInfo: {}
       },
-      {
-        avatarGuid: "2664326143951372989",
-        avatarEntityId: 16777432,
-        avatarAbilityInfo: {},
-        weaponGuid: "2664326143951285785",
-        weaponEntityId: 100663513,
-        weaponAbilityInfo: {}
-      }
     ],
     teamEnterInfo: {
       teamEntityId: 150995153,
@@ -156,9 +143,9 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Sc
   const sceneTeamUpdateNotify = new Packet<SceneTeamUpdateNotify>({
     sceneTeamAvatarList: [
       {
-        playerUid: 61,
-        avatarGuid: "2664326143951372989",
-        sceneId: 3,
+        playerUid: player.uid,
+        avatarGuid: player.avatars[1].guid,
+        sceneId: player.sceneId,
         entityId: 16777432,
       }
     ]
@@ -167,20 +154,20 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Sc
   const worldPlayerInfoNotify = new Packet<WorldPlayerInfoNotify>({
     playerInfoList: [
       {
-        uid: 61,
-        nickName: 'andromeda',
+        uid: player.uid,
+        nickName: player.nickname,
       }
     ],
-    playerUidList: [61],
+    playerUidList: [player.uid]
   }, 'WorldPlayerInfoNotify')
 
   const sceneTimeNotify = new Packet({
-    sceneId: 3,
+    sceneId: player.sceneId,
     sceneTime: 0,
   }, 'SceneTimeNotify')
 
   const playerGameTimeNotify = new Packet({
-    uid: 61,
+    uid: player.uid,
     gameTime: 0,
   }, 'PlayerGameTimeNotify')
 
@@ -189,14 +176,14 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Sc
   }, 'SceneInitFinishRsp')
 
   // send
-  worldDataNotify.send(host, client)
-  hostPlayerNotify.send(host, client)
-  sceneTimeNotify.send(host, client)
-  playerGameTimeNotify.send(host, client)
-  sceneDataNotify.send(host, client)
-  worldPlayerInfoNotify.send(host, client)
-  scenePlayerInfoNotify.send(host, client)
-  sceneTeamUpdateNotify.send(host, client)
-  playerEnterSceneInfoNotify.send(host, client)
-  sceneInitFinishRsp.send(host, client)
+  await worldDataNotify.send(host, client)
+  await hostPlayerNotify.send(host, client)
+  await sceneTimeNotify.send(host, client)
+  await playerGameTimeNotify.send(host, client)
+  await sceneDataNotify.send(host, client)
+  await playerEnterSceneInfoNotify.send(host, client)
+  await worldPlayerInfoNotify.send(host, client)
+  await scenePlayerInfoNotify.send(host, client)
+  await sceneTeamUpdateNotify.send(host, client)
+  await sceneInitFinishRsp.send(host, client)
 }

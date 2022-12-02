@@ -5,12 +5,10 @@ import { xor } from './network/packet/packet.xor'
 import { key } from './handlers/GetPlayerTokenReq'
 import { decodePacket } from './network/packet/packet.decode'
 import { Packet } from './network/packet'
+import { Player } from './game/player/'
 
-export interface ClientInfo {
-  ip: string
-  host: string
-  port: number
-}
+
+export const player = new Player(61, 'andromeda', 3)
 
 export function startEnet() {
   const host = enet_host_create(process.env.GAME_SERVER_HOST!,
@@ -28,7 +26,6 @@ export function startEnet() {
 
     try {
       const { name, protoBuf } = await decodePacket(data)
-
       const packet = new Packet(protoBuf, name)
 
       console.log(`New packet received. [${name}]`)

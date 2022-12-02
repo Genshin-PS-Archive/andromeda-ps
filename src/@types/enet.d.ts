@@ -1,8 +1,11 @@
 declare module "enet.js" {
-  export interface EnetPacket {
+  export interface ClientInfo {
     ip: string
     host: string
     port: number
+  }
+
+  export interface EnetPacket extends ClientInfo {
     data?: Buffer
   }
 

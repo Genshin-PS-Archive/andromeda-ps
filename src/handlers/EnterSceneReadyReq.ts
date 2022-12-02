@@ -1,8 +1,6 @@
-import enet from 'enet.js'
-
-import { ClientInfo } from '../enet'
+import { ClientInfo } from 'enet.js'
 import { Packet } from '../network/packet'
-import { encodePacket } from '../network/packet/packet.encode'
+import { player } from '../enet'
 
 export interface EnterSceneReadyReq {
   enterSceneToken: number
@@ -20,10 +18,11 @@ export interface EnterScenePeerNotify {
 
 export async function handle(host: number, client: ClientInfo, packet: Packet<EnterSceneReadyReq>) {
   const enterScenePeerNotify = new Packet<EnterScenePeerNotify>({
-    destSceneId: 3,
+    destSceneId: player.sceneId,
     peerId: 1,
     hostPeerId: 1,
   }, 'EnterScenePeerNotify')
+
   const enterSceneReadyRsp = new Packet<EnterSceneReadyRsp>({
     retcode: 0,
   }, 'EnterSceneReadyRsp')

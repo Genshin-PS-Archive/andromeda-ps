@@ -1,4 +1,4 @@
-import { ClientInfo } from '../enet'
+import { ClientInfo } from 'enet.js'
 import { Packet } from '../network/packet'
 
 export interface PingReq {

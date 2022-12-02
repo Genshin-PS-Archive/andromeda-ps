@@ -5,11 +5,11 @@ message PlayerLoginReq {
 	string client_version = 2;
 	string system_version = 3;
 	string device_name = 4;
-	string device_uid = 5;
+	string device_uuid = 5;
 	uint32 target_uid = 6;
 	uint64 login_rand = 7;
 	bool is_editor = 8;
-	string language_type = 9;
+	uint32 language_type = 9;
 	uint32 account_type = 10;
 	string account_uid = 11;
 	string platform = 12;

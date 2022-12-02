@@ -5,7 +5,7 @@ import "ObstacleInfo.proto";
 message PathfindingEnterSceneReq {
 	uint32 scene_id = 1;
 	uint32 version = 2;
-	repeated ObstacleInfo obstacles = 3;
+	uint32 obstacles = 3;
 	bool is_editor = 4;
-	repeated uint32 activity_id = 5;
+	uint32 activity_id = 5;
 }

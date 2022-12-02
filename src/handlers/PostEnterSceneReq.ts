@@ -1,7 +1,5 @@
-import enet from 'enet.js'
-import { ClientInfo } from '../enet'
+import { ClientInfo } from 'enet.js'
 import { Packet } from '../network/packet'
-import { encodePacket } from '../network/packet/packet.encode'
 
 export interface PostEnterSceneReq { }
 

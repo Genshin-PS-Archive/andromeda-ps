@@ -1,4 +1,5 @@
-import { ClientInfo } from '../enet'
+import { ClientInfo } from 'enet.js'
+import { player } from '../enet'
 import { Packet } from '../network/packet'
 
 export interface EnterSceneDoneReq { }
@@ -14,21 +15,17 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<En
         entityType: 1,
         entityId: 16777432,
         motionInfo: {
-          pos: { X: 0, Y: 300, Z: 0 },
+          pos: { X: 0, Y: 400, Z: 0 },
           rot: { Y: 0, },
           speed: {}
         },
         fightPropList: {},
-        propMap: {
-          '4001': 70,
-        },
+        propMap: {},
         lifeState: 1,
         avatar: {
-          uid: 61,
-          avatarId: 10000029,
-          guid: "2664326143951372989",
+          ...player.avatars[1],
           peerId: 1,
-          skillDepotId: 2901,
+          uid: player.uid,
           equipIdList: [],
           weapon: {
             entityId: 100663513,
@@ -45,14 +42,14 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<En
           skillLevelMap: {},
           proudSkillExtraLevelMap: {},
           teamResonanceList: [],
-          bornTime: 1620699348,
+          bornTime: Date.now() / 1000,
         }
       }
     ],
     appearType: 12
   }, 'SceneEntityAppearNotify')
 
-  const enterSceneDoneRsp = new Packet({ retcode: 0 }, 'EnterSceneDoneRsp')
+  const enterSceneDoneRsp = new Packet<EnterSceneDoneRsp>({ retcode: 0 }, 'EnterSceneDoneRsp')
 
   sceneEntityAppearNotify.send(host, client)
   enterSceneDoneRsp.send(host, client)

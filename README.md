@@ -11,7 +11,7 @@
 
 ```bash
 # Clone this repository
-$ git clone <https://github.com/okiwiziin/andromeda-ps>
+$ git clone https://github.com/okiwiziin/andromeda-ps
 
 # Access the project folder on cmd
 $ cd andromeda-ps

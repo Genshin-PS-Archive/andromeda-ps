@@ -1,6 +1,7 @@
 import { MT19937_64 } from '../network/mt'
 import { Packet } from '../network/packet'
-import { ClientInfo } from '../enet'
+import { player } from '../enet'
+import { ClientInfo } from 'enet.js'
 
 export let key: Buffer | undefined = undefined
 
@@ -22,11 +23,11 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Ge
   const getPlayerTokenReq = packet.data
 
   const getPlayerTokenRsp = new Packet<GetPlayerTokenRsp>({
-    uid: 61,
+    uid: player.uid,
     accountType: getPlayerTokenReq.accountType,
-    accountUid: '61',
+    accountUid: String(player.uid),
     token: getPlayerTokenReq.accountToken,
-    gmUid: 61,
+    gmUid: player.uid,
     secretKeySeed: 2,
   }, 'GetPlayerTokenRsp')
 

@@ -115,7 +115,7 @@ app.get('/query_cur_region', async (request, response) => {
     },
   }
 
-  const root = await protobufjs.load('src/proto/QueryCurrRegionHttpRsp.proto')
+  const root = await protobufjs.load('src/network/proto/QueryCurrRegionHttpRsp.proto')
   const message = root.lookupType('QueryCurrRegionHttpRsp')
 
   const encoded = message.encode(queryCurRegion).finish()
@@ -148,7 +148,7 @@ app.get('/query_region_list', async (request, response) => {
     }),
   }
 
-  const root = await protobufjs.load('src/proto/QueryRegionListHttpRsp.proto')
+  const root = await protobufjs.load('src/network/proto/QueryRegionListHttpRsp.proto')
   const message = root.lookupType('QueryRegionListHttpRsp')
 
   const encoded = message.encode(queryRegionList).finish()

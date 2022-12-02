@@ -1,4 +1,5 @@
-import { ClientInfo } from '../enet'
+import { ClientInfo } from 'enet.js'
+import { player } from '../enet'
 import { Packet } from '../network/packet'
 
 export interface PlayerLoginReq { }
@@ -25,7 +26,13 @@ export interface PlayerDataNotify {
   serverTime: number
   isFirstLoginToday: boolean
   regionId: number
-  propMap: { [prop: string]: number }
+  propMap: {
+    [prop: string]: {
+      type: number;
+      ival?: string | number
+      val?: string | number
+    }
+  }
 }
 
 export interface AvatarInfo {
@@ -34,6 +41,7 @@ export interface AvatarInfo {
   skillDepotId: number
   lifeState: number
   avatarType: number,
+  fightPropMap: { [prop: string]: number }
   propMap: {
     [prop: string]: {
       type: number
@@ -153,19 +161,28 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Pl
   }, 'StoreWeightLimitNotify')
 
   const playerDataNotify = new Packet<PlayerDataNotify>({
-    nickName: 'andromeda',
+    nickName: player.nickname,
     serverTime: Date.now() / 1000,
     isFirstLoginToday: false,
     regionId: 1,
-    propMap: {}
+    propMap: {
+      '10004': { type: 10004, ival: 1, val: 1 },
+      '10005': { type: 10005, ival: 0, val: 50 },
+      '10006': { type: 10006, ival: 1, val: 1 },
+      '10009': { type: 10009, ival: 1, val: 1 },
+      '10011': { type: 10011, ival: 24000, val: 24000 },
+      '10010': { type: 10010, ival: 24000, val: 24000 },
+      '10013': { type: 10013, ival: 60, val: 60 },
+      '10014': { type: 10014, ival: 0, val: 0 },
+    }
   }, 'PlayerDataNotify')
 
   const playerEnterSceneNotify = new Packet<PlayerEnterSceneNotify>({
-    sceneId: 3,
+    sceneId: player.sceneId,
     pos: { X: 0, Y: 600, Z: 0 },
     sceneBeginTime: Date.now(),
     type: 1,
-    targetUid: 61,
+    targetUid: player.uid,
     worldLevel: 8,
     enterSceneToken: 1000,
   }, 'PlayerEnterSceneNotify')
@@ -173,86 +190,23 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Pl
   const avatarDataNotify = new Packet<AvatarDataNotify>({
     avatarTeamMap: {
       '1': {
-        avatarGuidList: ["2664326143951479019"],
+        avatarGuidList: [player.avatars[1].guid],
         teamName: "Andromeda PS",
       }
     },
-    avatarList: [
-      {
-        avatarId: 10000026,
-        guid: "2664326143951479019",
-        skillDepotId: 2601,
-        lifeState: 1,
-        avatarType: 1,
-        propMap: {
-          '1001': {
-            type: 1001,
-            ival: '0',
-          },
-          '1002': {
-            type: 1002,
-            ival: 4,
-            val: 4,
-          },
-          '1003': {
-            type: 1003,
-            ival: '0',
-          },
-          '1004': {
-            type: 1004,
-            ival: '0',
-          },
-          '4001': {
-            type: 4001,
-            ival: 20,
-            val: 20,
-          },
-        },
-      },
-      {
-        avatarId: 10000029,
-        guid: "2664326143951372989",
-        skillDepotId: 2901,
-        lifeState: 1,
-        avatarType: 1,
-        propMap: {
-          '1001': {
-            type: 1001,
-            ival: '0',
-          },
-          '1002': {
-            type: 1002,
-            ival: 4,
-            val: 4,
-          },
-          '1003': {
-            type: 1003,
-            ival: '0',
-          },
-          '1004': {
-            type: 1004,
-            ival: '0',
-          },
-          '4001': {
-            type: 4001,
-            ival: 20,
-            val: 20,
-          },
-        },
-      }
-    ],
+    avatarList: player.avatars,
     curAvatarTeamId: 1,
-    chooseAvatarGuid: "2664326143951479019",
+    chooseAvatarGuid: player.avatars[1].guid,
   }, 'AvatarDataNotify')
 
   const playerLoginRsp = new Packet<PlayerLoginRsp>(
     { retcode: 0 }, 'PlayerLoginRsp')
 
-  playerStoreNotify.send(host, client)
-  openStateUpdateNotify.send(host, client)
-  storeWeightLimit.send(host, client)
-  playerDataNotify.send(host, client)
-  avatarDataNotify.send(host, client)
-  playerEnterSceneNotify.send(host, client)
-  playerLoginRsp.send(host, client)
+  await playerStoreNotify.send(host, client)
+  await openStateUpdateNotify.send(host, client)
+  await storeWeightLimit.send(host, client)
+  await playerDataNotify.send(host, client)
+  await avatarDataNotify.send(host, client)
+  await playerEnterSceneNotify.send(host, client)
+  await playerLoginRsp.send(host, client)
 }
