@@ -118,15 +118,15 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Sc
   }, 'HostPlayerNotify')
 
   const playerEnterSceneInfoNotify = new Packet<PlayerEnterSceneInfoNotify>({
-    curAvatarEntityId: 16777432,
-    avatarEnterInfo: [
-      {
-        avatarGuid: player.avatars[1].avatarInfo.guid,
-        avatarEntityId: 16777432,
+    curAvatarEntityId: 16777432 + Number(player.currentTeam.currentAvatarGuid),
+    avatarEnterInfo: player.currentTeam.avatarGuidList.map((guid, index) => {
+      return {
+        avatarGuid: guid,
+        avatarEntityId: 16777432 + Number(guid),
         weaponGuid: "2664326143951285785",
         weaponEntityId: 100663513,
-      },
-    ],
+      }
+    }),
     teamEnterInfo: {
       teamEntityId: 150995153,
       teamAbilityInfo: {},
@@ -141,14 +141,14 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Sc
   const sceneDataNotify = new Packet({}, 'SceneDataNotify')
 
   const sceneTeamUpdateNotify = new Packet<SceneTeamUpdateNotify>({
-    sceneTeamAvatarList: [
-      {
+    sceneTeamAvatarList: player.currentTeam.avatarGuidList.map((guid) => {
+      return {
         playerUid: player.uid,
-        avatarGuid: player.avatars[1].avatarInfo.guid,
+        avatarGuid: guid,
         sceneId: player.sceneId,
-        entityId: 16777432,
+        entityId: 16777432 + Number(guid),
       }
-    ]
+    }),
   }, 'SceneTeamUpdateNotify')
 
   const worldPlayerInfoNotify = new Packet<WorldPlayerInfoNotify>({
@@ -175,7 +175,6 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Sc
     retcode: 0
   }, 'SceneInitFinishRsp')
 
-  // send
   await worldDataNotify.send(host, client)
   await hostPlayerNotify.send(host, client)
   await sceneTimeNotify.send(host, client)

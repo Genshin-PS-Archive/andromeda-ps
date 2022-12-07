@@ -1,4 +1,4 @@
-# 🔗 andromeda-ps
+# andromeda-ps
 
 ## 🚀 A anime game server software reimplementation.
 

@@ -8,6 +8,7 @@ export interface PathfindingEnterSceneRsp {
 }
 
 export async function handle(host: number, client: ClientInfo, packet: Packet<PathfindingEnterSceneReq>) {
+
   const pathfindingEnterSceneRsp = new Packet<PathfindingEnterSceneRsp>({
     retcode: 0,
   }, 'PathfindingEnterSceneRsp')

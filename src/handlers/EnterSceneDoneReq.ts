@@ -8,31 +8,30 @@ export interface EnterSceneDoneRsp {
   retcode?: number
 }
 
-let avatar = player.avatars[1]
-
 export async function handle(host: number, client: ClientInfo, packet: Packet<EnterSceneDoneReq>) {
+  const avatar = player.currentAvatar
+  const entityId = 16777432 + avatar?.avatarInfo?.guid
+
+  player.curEntityId = entityId
+
   const sceneEntityAppearNotify = new Packet({
     entityList: [
       {
         entityType: 1,
-        entityId: 16777432,
-        motionInfo: {
-          pos: { x: 0, y: 400, z: 0 },
-          rot: { y: 0, },
-          speed: {}
-        },
+        entityId,
+        motionInfo: player.motionInfo,
         fightPropList: {},
         propMap: {},
         lifeState: 1,
         avatar: {
-          ...avatar.avatarInfo,
+          ...avatar?.avatarInfo,
           peerId: 1,
           uid: player.uid,
           equipIdList: [],
           weapon: {
-            ...avatar.weaponInfo,
+            ...avatar?.weaponInfo,
             entityId: 100663513,
-            gadgetId: Number(`500${avatar.weaponInfo.itemId}`),
+            gadgetId: Number(`500${avatar?.weaponInfo.itemId}`),
             level: 90,
             promoteLevel: 6,
             abilityInfo: {},

@@ -6,8 +6,7 @@ interface AvatarProps {
 }
 
 export class Avatar {
-
-  constructor(public props: AvatarProps) {}
+  constructor(public props: AvatarProps) { }
 
   get avatarInfo() {
     return this.props.avatarInfo

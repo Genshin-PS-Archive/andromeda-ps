@@ -7,11 +7,22 @@ import { xor } from './network/packet/packet.xor'
 import { Player } from './game/player/'
 import { Packet } from './network/packet'
 import { key } from './handlers/GetPlayerTokenReq'
+import { Team } from './game/team'
+
+const teams = [new Team({
+  id: 1,
+  name: 'Andromeda',
+  avatarGuidList: [19, 17, 31],
+  currentAvatarGuid: 19,
+})]
 
 export const player = new Player({
   uid: 61,
   nickname: 'andromeda',
-  sceneId: 3
+  sceneId: 3,
+  teams,
+  currentTeam: teams[0],
+  motionInfo: { pos: { x: 0, y: 300, z: 0, }, rot: { y: 0 }, speed: {} }
 })
 
 export function startEnet() {
@@ -36,6 +47,6 @@ export function startEnet() {
 
       await require(`./handlers/${name}`).handle(host,
         { ip: enetPacket.ip, host: enetPacket.host, port: enetPacket.port }, packet)
-    } catch (ignore) {}
+    } catch (ignore) { }
   }, 100)
 }

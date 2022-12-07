@@ -1,4 +1,4 @@
-import { ClientInfo, enet_peer_send } from 'enet.js'
+import { ClientInfo } from 'enet.js'
 import { player } from '../enet'
 import { Packet } from '../network/packet'
 
@@ -52,22 +52,22 @@ export interface AvatarInfo {
   }
 }
 
+export interface AvatarTeam {
+  avatarGuidList: any[],
+  teamName: string,
+}
+
 export interface AvatarDataNotify {
-  avatarTeamMap: {
-    [id: number]: {
-      avatarGuidList: any[],
-      teamName: string,
-    }
-  },
-  avatarList: any[];
+  avatarTeamMap: { [id: number]: AvatarTeam },
+  avatarList: AvatarInfo[];
   curAvatarTeamId: number,
   chooseAvatarGuid: any,
 }
 
 export interface Vector {
-  X?: number
-  Y?: number
-  Z?: number
+  x?: number
+  y?: number
+  z?: number
 }
 
 export interface PlayerEnterSceneNotify {
@@ -87,66 +87,70 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Pl
       2: 1,
       3: 1,
       4: 1,
+      10: 1,
       5: 1,
       6: 1,
-      7: 0,
+      7: 1,
       8: 1,
-      10: 1,
+      9: 1,
       11: 1,
       12: 1,
+      31: 1,
+      30: 1,
+      37: 1,
+      39: 1,
+      45: 1,
+      46: 1,
       13: 1,
       14: 1,
       15: 1,
       16: 1,
+      17: 1,
       18: 1,
       19: 1,
+      20: 1,
       21: 1,
       22: 1,
       23: 1,
+      24: 1,
       25: 1,
+      26: 1,
       27: 1,
       28: 1,
       29: 1,
-      30: 1,
-      31: 1,
       32: 1,
       33: 1,
+      34: 1,
       35: 1,
       36: 1,
-      37: 1,
       38: 1,
-      39: 1,
       40: 1,
-      44: 0,
-      45: 1,
-      47: 1,
-      49: 1,
+      41: 1,
       50: 1,
       51: 1,
       52: 1,
-      53: 1,
-      54: 1,
-      55: 1,
-      56: 1,
-      57: 1,
-      58: 1,
-      59: 1,
-      60: 1,
-      61: 1,
-      62: 1,
-      64: 1,
-      65: 1,
-      66: 1,
-      74: 1,
-      76: 1,
-      77: 1,
-      78: 1,
-      79: 1,
-      80: 1,
-      81: 1,
-      82: 1,
-      83: 1,
-      84: 1,
+      43: 1,
+      1001: 1,
+      1002: 1,
+      1003: 1,
+      1004: 1,
+      1005: 1,
+      1006: 1,
+      1007: 1,
+      1008: 1,
+      1009: 1,
+      1010: 1,
+      1100: 1,
+      1103: 1,
+      1101: 1,
+      1102: 1,
+      44: 1,
+      47: 1,
+      48: 1,
+      49: 1,
+      1200: 1,
+      1201: 1,
+      1202: 1,
     }
   }, 'OpenStateUpdateNotify')
 
@@ -178,21 +182,25 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Pl
     }
   }, 'PlayerDataNotify')
 
+  const avatarTeamMap: { [id: number]: AvatarTeam } = {}
+
+  player.teams.forEach(team => {
+    avatarTeamMap[team.id] = {
+      teamName: team.name,
+      avatarGuidList: team.avatarGuidList,
+    }
+  })
+
   const avatarDataNotify = new Packet<AvatarDataNotify>({
     avatarList: [],
-    curAvatarTeamId: 1,
-    chooseAvatarGuid: player.avatars[1].avatarInfo.guid,
-    avatarTeamMap: {
-      '1': {
-        avatarGuidList: [player.avatars[1].avatarInfo.guid],
-        teamName: "Andromeda PS",
-      }
-    },
+    curAvatarTeamId: player.currentTeam.id,
+    chooseAvatarGuid: player.currentTeam.currentAvatarGuid,
+    avatarTeamMap,
   }, 'AvatarDataNotify')
 
   const playerEnterSceneNotify = new Packet<PlayerEnterSceneNotify>({
     sceneId: player.sceneId,
-    pos: { X: 0, Y: 600, Z: 0 },
+    pos: player.motionInfo.pos,
     sceneBeginTime: Date.now(),
     type: 1,
     targetUid: player.uid,
@@ -208,7 +216,7 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Pl
   await storeWeightLimit.send(host, client)
   await playerDataNotify.send(host, client)
   await avatarDataNotify.send(host, client)
-  
+
   Promise.all(player.avatars.map(avatar => {
     return new Packet({
       avatar: avatar.avatarInfo,
