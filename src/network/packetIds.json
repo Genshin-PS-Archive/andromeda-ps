@@ -28,6 +28,7 @@
   "303": "HostPlayerNotify",
   "601": "PlayerStoreNotify",
   "602": "StoreWeightLimitNotify",
+  "1701": "AvatarAddNotify",
   "1716": "AvatarDataNotify",
   "1738": "SceneTeamUpdateNotify",
   "2305": "PathfindingEnterSceneReq",

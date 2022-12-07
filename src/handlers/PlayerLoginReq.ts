@@ -1,4 +1,4 @@
-import { ClientInfo } from 'enet.js'
+import { ClientInfo, enet_peer_send } from 'enet.js'
 import { player } from '../enet'
 import { Packet } from '../network/packet'
 
@@ -17,7 +17,8 @@ export interface PlayerStoreNotify extends StoreWeightLimitNotify {
 }
 
 export interface StoreWeightLimitNotify {
-  storeType: 'STORE_NONE' | 'STORE_PACK' | 'STORE_DEPOT'
+  // storeType: 'STORE_NONE' | 'STORE_PACK' | 'STORE_DEPOT'
+  storeType: 0 | 1 | 2;
   weightLimit: number
 }
 
@@ -58,7 +59,7 @@ export interface AvatarDataNotify {
       teamName: string,
     }
   },
-  avatarList: AvatarInfo[];
+  avatarList: any[];
   curAvatarTeamId: number,
   chooseAvatarGuid: any,
 }
@@ -151,18 +152,18 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Pl
 
   const playerStoreNotify = new Packet<PlayerStoreNotify>({
     itemList: [],
-    storeType: 'STORE_PACK',
+    storeType: 1,
     weightLimit: 10000,
   }, 'PlayerStoreNotify')
 
   const storeWeightLimit = new Packet<StoreWeightLimitNotify>({
-    storeType: 'STORE_PACK',
+    storeType: 1,
     weightLimit: 10000,
   }, 'StoreWeightLimitNotify')
 
   const playerDataNotify = new Packet<PlayerDataNotify>({
     nickName: player.nickname,
-    serverTime: Date.now() / 1000,
+    serverTime: Date.now(),
     isFirstLoginToday: false,
     regionId: 1,
     propMap: {
@@ -177,6 +178,18 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Pl
     }
   }, 'PlayerDataNotify')
 
+  const avatarDataNotify = new Packet<AvatarDataNotify>({
+    avatarList: [player.avatars[0]],
+    curAvatarTeamId: 1,
+    chooseAvatarGuid: player.avatars[1].guid,
+    avatarTeamMap: {
+      '1': {
+        avatarGuidList: [player.avatars[1].guid],
+        teamName: "Andromeda PS",
+      }
+    },
+  }, 'AvatarDataNotify')
+
   const playerEnterSceneNotify = new Packet<PlayerEnterSceneNotify>({
     sceneId: player.sceneId,
     pos: { X: 0, Y: 600, Z: 0 },
@@ -187,18 +200,6 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Pl
     enterSceneToken: 1000,
   }, 'PlayerEnterSceneNotify')
 
-  const avatarDataNotify = new Packet<AvatarDataNotify>({
-    avatarTeamMap: {
-      '1': {
-        avatarGuidList: [player.avatars[1].guid],
-        teamName: "Andromeda PS",
-      }
-    },
-    avatarList: player.avatars,
-    curAvatarTeamId: 1,
-    chooseAvatarGuid: player.avatars[1].guid,
-  }, 'AvatarDataNotify')
-
   const playerLoginRsp = new Packet<PlayerLoginRsp>(
     { retcode: 0 }, 'PlayerLoginRsp')
 
@@ -207,6 +208,15 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Pl
   await storeWeightLimit.send(host, client)
   await playerDataNotify.send(host, client)
   await avatarDataNotify.send(host, client)
+  
+  // lazy fix
+  Promise.all(player.avatars.map(avatar => {
+    return new Packet({
+      avatar,
+      isInTeam: true,
+    }, 'AvatarAddNotify').send(host, client)
+  }))
+
   await playerEnterSceneNotify.send(host, client)
   await playerLoginRsp.send(host, client)
 }

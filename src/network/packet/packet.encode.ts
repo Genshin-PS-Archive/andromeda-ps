@@ -23,7 +23,7 @@ export async function encodePacket(name: string, obj: any) {
   part1.writeUInt8(0, 5)
   part1.writeUInt16BE(data.length, 8)
 
-  const ret = Buffer.concat(
+  let ret = Buffer.concat(
     [part1, data, magic2],
     part1.length + data.length + magic2.length,
   );

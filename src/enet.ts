@@ -1,12 +1,12 @@
 import 'dotenv/config'
 
 import { enet_host_create, enet_host_service } from 'enet.js'
-import { xor } from './network/packet/packet.xor'
-import { key } from './handlers/GetPlayerTokenReq'
-import { decodePacket } from './network/packet/packet.decode'
-import { Packet } from './network/packet'
-import { Player } from './game/player/'
 
+import { decodePacket } from './network/packet/packet.decode'
+import { xor } from './network/packet/packet.xor'
+import { Player } from './game/player/'
+import { Packet } from './network/packet'
+import { key } from './handlers/GetPlayerTokenReq'
 
 export const player = new Player(61, 'andromeda', 3)
 
@@ -32,6 +32,6 @@ export function startEnet() {
 
       await require(`./handlers/${name}`).handle(host,
         { ip: enetPacket.ip, host: enetPacket.host, port: enetPacket.port }, packet)
-    } catch (ignore) { }
+    } catch (ignore) {}
   }, 100)
 }
