@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message WeaponPromoteReq {
+   uint64 target_weapon_guid = 1;
+}
+  

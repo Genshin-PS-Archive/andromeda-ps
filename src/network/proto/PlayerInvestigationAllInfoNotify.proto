@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "Investigation.proto";
+import "InvestigationTarget.proto";
+
+message PlayerInvestigationAllInfoNotify {
+   repeated Investigation investigation_list = 1;
+   repeated InvestigationTarget investigation_target_list = 2;
+}
+  

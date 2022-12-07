@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "InvestigationState.proto";
+
+message Investigation {
+   uint32 id = 1;
+   uint32 progress = 2;
+   uint32 total_progress = 3;
+   InvestigationState state = 4;
+}
+  

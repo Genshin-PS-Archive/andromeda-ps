@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "CookRecipeData.proto";
+import "ItemParam.proto";
+
+message PlayerCookRsp {
+   uint32 retcode = 1;
+   CookRecipeData recipe_data = 2;
+   ItemParam item = 3;
+   uint32 qte_quality = 4;
+}
+  

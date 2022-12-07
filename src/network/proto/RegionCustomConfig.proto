@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+message RegionCustomConfig {
+   bool close_antidebug = 1;
+   bool force_kill = 2;
+   bool antidebug_pc = 3;
+   bool antidubug_ios = 4;
+   bool antidubug_androd = 5;
+}
+  

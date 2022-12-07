@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message EntityRendererChangedInfo {
+   map<string, int32> changed_renderers = 1;
+}
+  

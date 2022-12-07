@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "DungeonCandidateTeamPlayerLeaveReason.proto";
+
+message DungeonCandidateTeamPlayerLeaveNotify {
+   uint32 player_uid = 1;
+   DungeonCandidateTeamPlayerLeaveReason reason = 2;
+}
+  

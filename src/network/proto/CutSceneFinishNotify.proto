@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message CutSceneFinishNotify {
+   uint32 cutscene_id = 1;
+}
+  

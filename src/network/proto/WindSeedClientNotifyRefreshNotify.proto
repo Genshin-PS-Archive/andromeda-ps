@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message WindSeedClientNotifyRefreshNotify {
+   uint32 refresh_num = 1;
+}
+  

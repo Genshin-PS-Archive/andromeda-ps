@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+message DungeonChallengeBeginNotify {
+   uint32 challenge_id = 1;
+   uint32 challenge_index = 2;
+   repeated uint32 param_list = 3;
+}
+  

@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message MarkNewNotify {
+   uint32 mark_new_type = 1;
+   repeated uint32 id_list = 2;
+}
+  

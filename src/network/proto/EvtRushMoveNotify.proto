@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "ForwardType.proto";
+import "EvtRushMoveInfo.proto";
+
+message EvtRushMoveNotify {
+   ForwardType forward_type = 1;
+   EvtRushMoveInfo evt_rush_move_info = 2;
+}
+  

@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "PropValue.proto";
+
+message EntityPropNotify {
+   uint32 entity_id = 1;
+   map<uint32, PropValue> prop_map = 2;
+}
+  

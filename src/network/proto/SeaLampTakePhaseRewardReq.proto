@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message SeaLampTakePhaseRewardReq {
+   uint32 phase_id = 1;
+}
+  

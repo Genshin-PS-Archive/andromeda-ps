@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "PlatformInfo.proto";
+
+message PlatformChangeRouteNotify {
+   uint32 entity_id = 1;
+   PlatformInfo platform = 2;
+}
+  

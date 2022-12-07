@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message AddQuestContentProgressRsp {
+   int32 retcode = 1;
+   uint32 content_type = 2;
+}
+  

@@ -3,7 +3,8 @@ syntax = "proto3";
 import "Vector.proto";
 
 message PlayerLocationInfo {
-	uint32 uid = 1;
-	Vector pos = 2;
-	Vector rot = 3;
+   uint32 uid = 1;
+   Vector pos = 2;
+   Vector rot = 3;
 }
+  

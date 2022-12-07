@@ -1,9 +1,27 @@
-import { AvatarInfo } from '../../handlers/PlayerLoginReq'
+import { Avatar } from '../avatar'
 import { avatars } from './load.avatars'
+
+interface PlayerProps {
+  uid: number
+  nickname: string
+  sceneId: number
+}
 
 export class Player {
 
-  public avatars: AvatarInfo[] = avatars
+  public avatars: Avatar[] = avatars
 
-  constructor(public uid: number, public nickname: string, public sceneId: number) { }
+  constructor(public props: PlayerProps) {}
+
+  get uid() {
+    return this.props.uid
+  }
+
+  get nickname() {
+    return this.props.nickname
+  }
+
+  get sceneId() {
+    return this.props.sceneId
+  }
 }

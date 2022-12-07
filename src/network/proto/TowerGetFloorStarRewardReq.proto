@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message TowerGetFloorStarRewardReq {
+   uint32 floor_id = 1;
+}
+  

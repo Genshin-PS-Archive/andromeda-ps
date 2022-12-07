@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message TowerBuffSelectRsp {
+   int32 retcode = 1;
+   uint32 tower_buff_id = 2;
+}
+  

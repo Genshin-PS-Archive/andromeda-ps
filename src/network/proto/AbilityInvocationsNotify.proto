@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "ForwardType.proto";
+import "AbilityInvokeEntry.proto";
+
+message AbilityInvocationsNotify {
+   ForwardType forward_type = 1;
+   uint32 forward_peer = 2;
+   repeated uint32 forward_peers = 3;
+   repeated AbilityInvokeEntry invokes = 4;
+}
+  

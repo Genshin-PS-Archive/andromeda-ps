@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "ForwardType.proto";
+
+message EvtFaceToEntityNotify {
+   ForwardType forward_type = 1;
+   uint32 entity_id = 2;
+   uint32 face_entity_id = 3;
+}
+  

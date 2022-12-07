@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message DungeonCandidateTeamReplyInviteReq {
+   bool is_accept = 1;
+}
+  

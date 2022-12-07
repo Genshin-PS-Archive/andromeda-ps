@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "AbilitySyncStateInfo.proto";
+import "EntityRendererChangedInfo.proto";
+
+message EntityAuthorityChangeNotify {
+   uint32 entity_id = 1;
+   uint32 authority_peer_id = 2;
+   AbilitySyncStateInfo ability_info = 3;
+   EntityRendererChangedInfo renderer_changed_info = 4;
+}
+  

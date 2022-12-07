@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "WindSeedClientNotifyRefreshNotify.proto";
+import "WindSeedClientNotifyAddWindBulletNotify.proto";
+
+message WindSeedClientNotify {
+   WindSeedClientNotifyRefreshNotify refresh_notify = 1;
+   WindSeedClientNotifyAddWindBulletNotify add_wind_bullet_notify = 2;
+}
+  

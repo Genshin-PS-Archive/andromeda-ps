@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message AvatarChangeElementTypeReq {
+   uint32 scene_id = 1;
+   uint32 area_id = 2;
+}
+  

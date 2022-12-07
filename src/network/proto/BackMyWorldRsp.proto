@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message BackMyWorldRsp {
+   int32 retcode = 1;
+}
+  

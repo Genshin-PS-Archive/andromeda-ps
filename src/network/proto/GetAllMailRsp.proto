@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "MailData.proto";
+
+message GetAllMailRsp {
+   uint32 retcode = 1;
+   repeated MailData mail_list = 2;
+}
+  

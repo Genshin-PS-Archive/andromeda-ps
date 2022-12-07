@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message QuestDelNotify {
+   uint32 quest_id = 1;
+}
+  

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "ForwardType.proto";
+
+message EvtEntityStartDieEndNotify {
+   ForwardType forward_type = 1;
+   uint32 entity_id = 2;
+   bool immediately = 3;
+   uint32 die_state_flag = 4;
+}
+  

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "ShopGoods.proto";
+
+message BuyGoodsReq {
+   uint32 shop_type = 1;
+   ShopGoods goods = 2;
+   uint32 buy_count = 3;
+}
+  

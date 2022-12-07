@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+message FocusAvatarRsp {
+   int32 retcode = 1;
+   bool is_focus = 2;
+   uint64 avatar_guid = 3;
+}
+  

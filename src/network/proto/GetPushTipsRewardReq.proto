@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message GetPushTipsRewardReq {
+   repeated uint32 push_tips_id_list = 1;
+}
+  

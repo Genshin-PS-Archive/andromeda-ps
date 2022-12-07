@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+message SceneAreaWeatherNotify {
+   uint32 weather_gadget_id = 1;
+   map<uint32, string> weather_value_map = 2;
+   uint32 weather_area_id = 3;
+   uint32 climate_type = 4;
+}
+  

@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message DungeonShowReminderNotify {
+   uint32 reminder_id = 1;
+}
+  

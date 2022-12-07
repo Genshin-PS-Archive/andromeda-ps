@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "ActivityInfo.proto";
+
+message GetActivityInfoRsp {
+   int32 retcode = 1;
+   repeated ActivityInfo activity_info_list = 2;
+}
+  

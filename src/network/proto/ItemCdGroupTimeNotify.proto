@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message ItemCdGroupTimeNotify {
+   map<uint32, uint64> item_cd_map = 1;
+}
+  

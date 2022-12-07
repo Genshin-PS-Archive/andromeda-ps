@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message LogTalkNotify {
+   uint32 talk_id = 1;
+   bool is_start = 2;
+}
+  

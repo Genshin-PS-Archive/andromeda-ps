@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+import "EntityMoveInfo.proto";
+
+message SceneEntitiesMoveCombineNotify {
+   repeated EntityMoveInfo entity_move_info_list = 1;
+}
+  

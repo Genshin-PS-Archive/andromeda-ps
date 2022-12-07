@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "PlayerDieOption.proto";
+
+message DungeonDieOptionRsp {
+   int32 retcode = 1;
+   PlayerDieOption die_option = 2;
+   uint32 revive_count = 3;
+}
+  

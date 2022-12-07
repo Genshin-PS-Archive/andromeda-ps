@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message ClientNewMailNotify {
+   uint32 not_read_num = 1;
+   uint32 not_got_attachment_num = 2;
+}
+  

@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message MaterialDeleteReturnNotify {
+   map<uint32, uint32> delete_material_map = 1;
+   map<uint32, uint32> return_item_map = 2;
+}
+  

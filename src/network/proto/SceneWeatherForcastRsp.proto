@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+message SceneWeatherForcastRsp {
+   int32 retcode = 1;
+   uint64 next_climate_time = 2;
+   repeated uint32 forcast_climate_list = 3;
+}
+  

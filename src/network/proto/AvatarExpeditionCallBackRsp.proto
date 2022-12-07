@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "AvatarExpeditionInfo.proto";
+
+message AvatarExpeditionCallBackRsp {
+   int32 retcode = 1;
+   map<uint64, AvatarExpeditionInfo> expedition_info_map = 2;
+}
+  

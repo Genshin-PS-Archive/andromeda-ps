@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "TowerTeam.proto";
+
+message TowerTeamSelectReq {
+   uint32 floor_id = 1;
+   repeated TowerTeam tower_team_list = 2;
+}
+  

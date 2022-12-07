@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "PropChangeReason.proto";
+
+message PlayerPropChangeReasonNotify {
+   uint32 prop_type = 1;
+   float old_value = 2;
+   float cur_value = 3;
+   PropChangeReason reason = 4;
+}
+  

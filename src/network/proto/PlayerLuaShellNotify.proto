@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message PlayerLuaShellNotify {
+   uint32 id = 1;
+   bytes lua_shell = 2;
+}
+  

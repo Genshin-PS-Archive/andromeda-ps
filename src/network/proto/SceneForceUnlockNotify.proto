@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message SceneForceUnlockNotify {
+   repeated uint32 force_id_list = 1;
+   bool is_add = 2;
+}
+  

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "AbilityInvokeEntryHead.proto";
+import "AbilityInvokeArgument.proto";
+
+message AbilityInvokeEntry {
+   AbilityInvokeEntryHead head = 1;
+   AbilityInvokeArgument argument_type = 2;
+   bytes ability_data = 3;
+   uint32 entity_id = 4;
+}
+  

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "SvrMsgId.proto";
+import "MsgParam.proto";
+
+message ShowMessageNotify {
+   SvrMsgId msg_id = 1;
+   repeated MsgParam params = 2;
+}
+  

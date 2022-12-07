@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "DungeonEntryInfo.proto";
+
+message DungeonEntryInfoRsp {
+   int32 retcode = 1;
+   uint32 point_id = 2;
+   repeated DungeonEntryInfo dungeon_entry_list = 3;
+   uint32 recommend_dungeon_id = 4;
+}
+  

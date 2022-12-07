@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "AvatarTeam.proto";
+
+message AvatarTeamUpdateNotify {
+   map<uint32, AvatarTeam> avatar_team_map = 1;
+   repeated uint64 temp_avatar_guid_list = 2;
+}
+  

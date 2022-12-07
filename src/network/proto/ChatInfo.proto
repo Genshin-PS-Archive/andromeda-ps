@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "ChatInfoSystemHint.proto";
+
+message ChatInfo {
+   uint32 time = 1;
+   uint32 uid = 2;
+   string text = 3;
+   uint32 icon = 4;
+   ChatInfoSystemHint system_hint = 5;
+}
+  

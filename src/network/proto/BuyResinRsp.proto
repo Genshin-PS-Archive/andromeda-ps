@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message BuyResinRsp {
+   int32 retcode = 1;
+   uint32 cur_value = 2;
+}
+  

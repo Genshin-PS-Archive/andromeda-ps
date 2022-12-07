@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+message AvatarUpgradeReq {
+   uint32 item_id = 1;
+   uint32 count = 2;
+   uint64 avatar_guid = 3;
+}
+  

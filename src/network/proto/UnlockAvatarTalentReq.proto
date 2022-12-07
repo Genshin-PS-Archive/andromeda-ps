@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message UnlockAvatarTalentReq {
+   uint64 avatar_guid = 1;
+   uint32 talent_id = 2;
+}
+  

@@ -1,11 +1,12 @@
 syntax = "proto3";
 
-import "ClientCustomConfig.proto";
 import "RegionSimpleInfo.proto";
+import "ClientCustomConfig.proto";
 
 message QueryRegionListHttpRsp {
-  uint32 retcode = 1;
-  repeated RegionSimpleInfo region_list = 2;
-  string client_custom_config = 3;
-  ClientCustomConfig client_config = 4;
+   int32 retcode = 1;
+   repeated RegionSimpleInfo region_list = 2;
+   string client_custom_config = 3;
+   ClientCustomConfig client_config = 4;
 }
+  

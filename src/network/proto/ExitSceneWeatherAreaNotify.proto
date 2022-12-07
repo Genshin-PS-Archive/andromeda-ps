@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message ExitSceneWeatherAreaNotify {
+   uint32 weather_gadget_id = 1;
+}
+  

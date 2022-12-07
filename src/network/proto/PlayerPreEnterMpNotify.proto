@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "PlayerPreEnterMpNotifyState.proto";
+
+message PlayerPreEnterMpNotify {
+   uint32 uid = 1;
+   PlayerPreEnterMpNotifyState state = 2;
+   string nickname = 3;
+}
+  

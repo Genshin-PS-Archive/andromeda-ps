@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "QueryPathRspPathStatusType.proto";
+import "Vector.proto";
+
+message QueryPathRsp {
+   int32 retcode = 1;
+   int32 query_id = 2;
+   QueryPathRspPathStatusType query_status = 3;
+   repeated Vector corners = 4;
+}
+  

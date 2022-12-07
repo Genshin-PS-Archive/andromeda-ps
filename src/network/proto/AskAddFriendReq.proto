@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message AskAddFriendReq {
+   uint32 target_uid = 1;
+}
+  

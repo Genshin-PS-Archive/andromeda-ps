@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "ForwardType.proto";
+import "EvtFaceToDirInfo.proto";
+
+message EvtFaceToDirNotify {
+   ForwardType forward_type = 1;
+   EvtFaceToDirInfo evt_face_to_dir_info = 2;
+}
+  

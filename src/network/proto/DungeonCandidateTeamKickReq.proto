@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message DungeonCandidateTeamKickReq {
+   uint32 player_uid = 1;
+}
+  

@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message DailyTaskScoreRewardNotify {
+   uint32 reward_id = 1;
+}
+  

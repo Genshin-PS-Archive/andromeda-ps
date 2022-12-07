@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "OnlinePlayerInfo.proto";
+
+message GetOnlinePlayerListRsp {
+   int32 retcode = 1;
+   repeated OnlinePlayerInfo player_info_list = 2;
+}
+  

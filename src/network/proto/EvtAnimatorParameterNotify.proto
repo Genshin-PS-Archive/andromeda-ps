@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "ForwardType.proto";
+import "EvtAnimatorParameterInfo.proto";
+
+message EvtAnimatorParameterNotify {
+   ForwardType forward_type = 1;
+   EvtAnimatorParameterInfo animator_param_info = 2;
+}
+  

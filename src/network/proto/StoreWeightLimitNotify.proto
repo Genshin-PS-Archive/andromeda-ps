@@ -3,6 +3,7 @@ syntax = "proto3";
 import "StoreType.proto";
 
 message StoreWeightLimitNotify {
-  StoreType store_type = 1;
-  uint32 weight_limit = 2;
+   StoreType store_type = 1;
+   uint32 weight_limit = 3;
 }
+  

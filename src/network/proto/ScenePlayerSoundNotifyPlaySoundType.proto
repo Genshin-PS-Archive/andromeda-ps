@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+enum ScenePlayerSoundNotifyPlaySoundType {
+   PLAY_SOUND_NONE = 0;
+   PLAY_SOUND_START = 1;
+   PLAY_SOUND_STOP = 2;
+}
+  

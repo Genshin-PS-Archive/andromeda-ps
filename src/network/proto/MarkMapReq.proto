@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "MarkMapReqOperation.proto";
+import "MapMarkPoint.proto";
+
+message MarkMapReq {
+   MarkMapReqOperation op = 1;
+   MapMarkPoint old = 2;
+   MapMarkPoint mark = 3;
+}
+  

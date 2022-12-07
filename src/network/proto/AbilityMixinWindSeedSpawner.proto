@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "AbilityMixinWindSeedSpawnerAddSignal.proto";
+import "AbilityMixinWindSeedSpawnerRefreshSeed.proto";
+import "AbilityMixinWindSeedSpawnerCatchSeed.proto";
+
+message AbilityMixinWindSeedSpawner {
+   AbilityMixinWindSeedSpawnerAddSignal add_signal = 1;
+   AbilityMixinWindSeedSpawnerRefreshSeed refresh_seed = 2;
+   AbilityMixinWindSeedSpawnerCatchSeed catch_seed = 3;
+}
+  

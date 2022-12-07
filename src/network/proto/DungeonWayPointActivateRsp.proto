@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message DungeonWayPointActivateRsp {
+   int32 retcode = 1;
+   uint32 way_point_id = 2;
+}
+  

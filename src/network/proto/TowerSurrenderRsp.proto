@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message TowerSurrenderRsp {
+   int32 retcode = 1;
+}
+  

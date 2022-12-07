@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "SceneRouteChangeInfo.proto";
+
+message SceneRouteChangeNotify {
+   uint32 scene_id = 1;
+   repeated SceneRouteChangeInfo route_list = 2;
+   uint32 scene_time = 3;
+}
+  

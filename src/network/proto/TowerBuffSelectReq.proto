@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message TowerBuffSelectReq {
+   uint32 tower_buff_id = 1;
+}
+  

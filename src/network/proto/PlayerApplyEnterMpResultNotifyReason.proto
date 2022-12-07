@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+enum PlayerApplyEnterMpResultNotifyReason {
+   PLAYER_JUDGE = 0;
+   SCENE_CANNOT_ENTER = 1;
+   PLAYER_CANNOT_ENTER_MP = 2;
+   SYSTEM_JUDGE = 3;
+   ALLOW_ENTER_PLAYER_FULL = 4;
+   WORLD_LEVEL_LOWER_THAN_HOST = 5;
+}
+  

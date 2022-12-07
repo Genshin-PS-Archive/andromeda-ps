@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+message GetAuthkeyRsp {
+   uint32 retcode = 1;
+   string authkey = 2;
+   string auth_appid = 3;
+   uint32 sign_type = 4;
+   uint32 authkey_ver = 5;
+   string game_biz = 6;
+}
+  

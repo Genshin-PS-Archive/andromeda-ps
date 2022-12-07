@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "ClientCustomConfig.proto";
+
+message ForceUpdateInfo {
+   string force_update_url = 1;
+   ClientCustomConfig client_config = 2;
+}
+  

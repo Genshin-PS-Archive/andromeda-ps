@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message MaterialDeleteInfoDateTimeDelete {
+   uint32 delete_time = 1;
+}
+  

@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "ObstacleInfo.proto";
+
+message GmShowObstacleRsp {
+   int32 retcode = 1;
+   repeated ObstacleInfo obstacles = 2;
+}
+  

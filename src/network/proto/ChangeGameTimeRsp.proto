@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message ChangeGameTimeRsp {
+   int32 retcode = 1;
+   uint32 cur_game_time = 2;
+}
+  

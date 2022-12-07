@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+message DungeonSettleNotify {
+   uint32 dungeon_id = 1;
+   bool is_success = 2;
+   repeated uint32 fail_cond_list = 3;
+   repeated map settle_show = 4,betterproto.TYPE_UINT32,betterproto.TYPE_MESSAGE;
+   uint32 close_time = 5;
+}
+  

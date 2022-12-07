@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message WatcherEventNotify {
+   uint32 watcher_id = 1;
+   uint32 add_progress = 2;
+}
+  

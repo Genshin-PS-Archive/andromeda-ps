@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+message SeaLampContributeItemRsp {
+   int32 retcode = 1;
+   uint32 total_contribution = 2;
+   uint32 add_contribution = 3;
+   uint32 add_progress = 4;
+}
+  

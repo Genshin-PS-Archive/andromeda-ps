@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message JoinPlayerSceneReq {
+   uint32 target_uid = 1;
+}
+  

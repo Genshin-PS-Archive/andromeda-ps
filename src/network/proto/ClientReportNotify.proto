@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message ClientReportNotify {
+   string report_type = 1;
+   string report_value = 2;
+}
+  

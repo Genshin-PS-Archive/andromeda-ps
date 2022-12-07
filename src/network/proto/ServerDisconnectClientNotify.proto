@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message ServerDisconnectClientNotify {
+   uint32 data = 1;
+}
+  

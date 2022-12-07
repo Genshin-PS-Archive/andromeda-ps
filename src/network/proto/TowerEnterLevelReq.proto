@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message TowerEnterLevelReq {
+   uint32 enter_point_id = 1;
+}
+  

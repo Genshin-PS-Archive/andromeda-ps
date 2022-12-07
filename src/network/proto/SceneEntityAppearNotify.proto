@@ -1,10 +1,11 @@
 syntax = "proto3";
 
-import "VisionType.proto";
 import "SceneEntityInfo.proto";
+import "VisionType.proto";
 
 message SceneEntityAppearNotify {
-	repeated SceneEntityInfo entity_list = 1;
-	VisionType appear_type = 2;
-	uint32 param = 3;
+   repeated SceneEntityInfo entity_list = 1;
+   VisionType appear_type = 2;
+   uint32 param = 3;
 }
+  

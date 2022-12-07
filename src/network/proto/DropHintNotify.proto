@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "Vector.proto";
+
+message DropHintNotify {
+   repeated uint32 item_id_list = 1;
+   Vector position = 2;
+}
+  

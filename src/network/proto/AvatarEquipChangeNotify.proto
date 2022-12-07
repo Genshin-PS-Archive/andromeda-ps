@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "SceneWeaponInfo.proto";
+import "SceneReliquaryInfo.proto";
+
+message AvatarEquipChangeNotify {
+   uint64 avatar_guid = 1;
+   uint32 equip_type = 2;
+   uint32 item_id = 3;
+   uint64 equip_guid = 4;
+   SceneWeaponInfo weapon = 5;
+   SceneReliquaryInfo reliquary = 6;
+}
+  

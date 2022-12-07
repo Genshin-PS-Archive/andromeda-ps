@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "PbNavMeshTile.proto";
+
+message GmShowNavMeshRsp {
+   int32 retcode = 1;
+   repeated PbNavMeshTile tiles = 2;
+}
+  

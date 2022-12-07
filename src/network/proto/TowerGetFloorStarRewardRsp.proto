@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message TowerGetFloorStarRewardRsp {
+   int32 retcode = 1;
+   uint32 floor_id = 2;
+}
+  

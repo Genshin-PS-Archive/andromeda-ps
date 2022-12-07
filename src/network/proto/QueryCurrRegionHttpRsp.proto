@@ -1,12 +1,16 @@
 syntax = "proto3";
 
-import "ClientCustomConfig.proto";
 import "RegionInfo.proto";
+import "ClientCustomConfig.proto";
+import "ForceUpdateInfo.proto";
+import "StopServerInfo.proto";
 
 message QueryCurrRegionHttpRsp {
-  uint32 retcode = 1;
-  string msg = 2;
-  RegionInfo region_info = 3;
-  ClientCustomConfig client_config = 10;
-  // Tem mais 2 fields mas foda-se.
+   int32 retcode = 1;
+   string msg = 2;
+   RegionInfo region_info = 3;
+   ClientCustomConfig client_config = 10;
+   ForceUpdateInfo force_udpate = 4;
+   StopServerInfo stop_server = 5;
 }
+  

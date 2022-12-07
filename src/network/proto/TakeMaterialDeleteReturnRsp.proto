@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message TakeMaterialDeleteReturnRsp {
+   int32 retcode = 1;
+}
+  

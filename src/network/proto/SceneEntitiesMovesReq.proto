@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+import "EntityMoveInfo.proto";
+
+message SceneEntitiesMovesReq {
+   repeated EntityMoveInfo entity_move_info_list = 1;
+}
+  

@@ -8,7 +8,7 @@ export async function decodePacket(data: Buffer) {
   const name = packetIds[packetID]
 
   const sliced = Buffer.from(data.subarray(10)).subarray(0, -2);
-  const packetData = sliced.subarray(data.readUInt8())
+  const packetData = sliced.subarray(data.readUInt8(4))
 
   const proto = await protobufjs.load(`src/network/proto/${name}.proto`)
   const protoBuf = proto.lookupTypeOrEnum(name).decode(packetData).toJSON()

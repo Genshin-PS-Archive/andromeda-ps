@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+enum PlayerQuitFromMpNotifyQuitReason {
+   INVALID = 0;
+   HOST_NO_OTHER_PLAYER = 1;
+   KICK_BY_HOST = 2;
+   BACK_TO_MY_WORLD = 3;
+   KICK_BY_HOST_LOGOUT = 4;
+}
+  

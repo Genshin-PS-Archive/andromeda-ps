@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+message ProudSkillUpgradeRsp {
+   int32 retcode = 1;
+   uint64 avatar_guid = 2;
+   uint32 proud_skill_id = 3;
+}
+  

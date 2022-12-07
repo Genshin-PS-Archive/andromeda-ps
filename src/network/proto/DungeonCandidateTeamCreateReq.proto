@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message DungeonCandidateTeamCreateReq {
+   uint32 dungeon_id = 1;
+   uint32 point_id = 2;
+}
+  

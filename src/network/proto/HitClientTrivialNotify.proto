@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "Vector.proto";
+
+message HitClientTrivialNotify {
+   Vector position = 1;
+   uint32 owner_entity_id = 2;
+}
+  

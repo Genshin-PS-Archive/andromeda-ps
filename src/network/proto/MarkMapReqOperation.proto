@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+enum MarkMapReqOperation {
+   ADD = 0;
+   MOD = 1;
+   DEL = 2;
+   GET = 3;
+}
+  

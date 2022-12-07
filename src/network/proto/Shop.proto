@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "ShopGoods.proto";
+
+message Shop {
+   uint32 shop_type = 1;
+   repeated ShopGoods goods_list = 2;
+}
+  

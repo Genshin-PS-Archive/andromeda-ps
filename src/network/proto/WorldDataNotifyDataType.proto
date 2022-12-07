@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+enum WorldDataNotifyDataType {
+   DATA_NONE = 0;
+   WORLD_LEVEL = 1;
+}
+  

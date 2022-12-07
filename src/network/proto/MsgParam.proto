@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+message MsgParam {
+   uint32 int_param = 1;
+   float flt_param = 2;
+   string str_param = 3;
+}
+  

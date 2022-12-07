@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+enum InteractType {
+   INTERACT_NONE = 0;
+   INTERACT_PICK_ITEM = 1;
+   INTERACT_GATHER = 2;
+   INTERACT_OPEN_CHEST = 3;
+   INTERACT_OPEN_STATUE = 4;
+   INTERACT_CONSUM = 5;
+}
+  

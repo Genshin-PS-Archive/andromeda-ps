@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message DungeonCandidateTeamInviteReq {
+   repeated uint32 player_uids = 1;
+}
+  

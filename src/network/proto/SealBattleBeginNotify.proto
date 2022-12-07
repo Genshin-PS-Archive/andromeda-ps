@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "SealBattleType.proto";
+
+message SealBattleBeginNotify {
+   uint32 seal_entity_id = 1;
+   uint32 seal_radius = 2;
+   uint32 seal_max_progress = 3;
+   SealBattleType battle_type = 4;
+}
+  

@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+enum InvestigationMonsterLockState {
+   LOCK_NONE = 0;
+   LOCK_QUEST = 1;
+}
+  

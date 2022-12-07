@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message DungeonWayPointActivateReq {
+   uint32 way_point_id = 1;
+}
+  

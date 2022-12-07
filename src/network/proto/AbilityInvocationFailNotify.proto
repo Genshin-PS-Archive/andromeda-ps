@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "AbilityInvokeEntry.proto";
+
+message AbilityInvocationFailNotify {
+   uint32 entity_id = 1;
+   AbilityInvokeEntry invoke = 2;
+   string reason = 3;
+}
+  

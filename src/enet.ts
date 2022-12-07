@@ -8,7 +8,11 @@ import { Player } from './game/player/'
 import { Packet } from './network/packet'
 import { key } from './handlers/GetPlayerTokenReq'
 
-export const player = new Player(61, 'andromeda', 3)
+export const player = new Player({
+  uid: 61,
+  nickname: 'andromeda',
+  sceneId: 3
+})
 
 export function startEnet() {
   const host = enet_host_create(process.env.GAME_SERVER_HOST!,

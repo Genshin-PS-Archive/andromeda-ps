@@ -121,7 +121,7 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Sc
     curAvatarEntityId: 16777432,
     avatarEnterInfo: [
       {
-        avatarGuid: player.avatars[1].guid,
+        avatarGuid: player.avatars[1].avatarInfo.guid,
         avatarEntityId: 16777432,
         weaponGuid: "2664326143951285785",
         weaponEntityId: 100663513,
@@ -144,7 +144,7 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Sc
     sceneTeamAvatarList: [
       {
         playerUid: player.uid,
-        avatarGuid: player.avatars[1].guid,
+        avatarGuid: player.avatars[1].avatarInfo.guid,
         sceneId: player.sceneId,
         entityId: 16777432,
       }

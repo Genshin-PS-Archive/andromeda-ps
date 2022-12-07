@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+enum TrialAvatarGrantRecordGrantReason {
+   INVALID = 0;
+   GRANT_BY_QUEST = 1;
+}
+  

@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+message AvatarCardChangeReq {
+   uint64 avatar_guid = 1;
+   uint32 item_id = 2;
+   uint32 count = 3;
+}
+  

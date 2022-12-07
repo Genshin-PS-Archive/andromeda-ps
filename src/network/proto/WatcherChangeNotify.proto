@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message WatcherChangeNotify {
+   repeated uint32 new_watcher_list = 1;
+   repeated uint32 removed_watcher_list = 2;
+}
+  

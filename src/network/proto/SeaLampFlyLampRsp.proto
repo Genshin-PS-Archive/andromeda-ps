@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+message SeaLampFlyLampRsp {
+   int32 retcode = 1;
+   uint32 total_contribution = 2;
+   uint32 remain_fly_num = 3;
+   uint32 add_contribution = 4;
+   uint32 add_progress = 5;
+   uint32 item_num = 6;
+}
+  

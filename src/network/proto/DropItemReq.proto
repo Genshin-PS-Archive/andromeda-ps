@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "StoreType.proto";
+import "Vector.proto";
+
+message DropItemReq {
+   StoreType store_type = 1;
+   uint64 guid = 2;
+   uint32 count = 3;
+   Vector pos = 4;
+}
+  

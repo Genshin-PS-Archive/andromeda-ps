@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message TowerDailyRewardProgressChangeNotify {
+   uint32 daily_floor_id = 1;
+   uint32 daily_level_index = 2;
+}
+  

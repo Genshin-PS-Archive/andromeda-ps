@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message SeaLampTakeContributionRewardReq {
+   uint32 config_id = 1;
+}
+  

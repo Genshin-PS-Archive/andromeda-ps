@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+enum PlayerPreEnterMpNotifyState {
+   INVALID = 0;
+   START = 1;
+   TIMEOUT = 2;
+}
+  

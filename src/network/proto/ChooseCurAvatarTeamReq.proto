@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message ChooseCurAvatarTeamReq {
+   uint32 team_id = 1;
+}
+  

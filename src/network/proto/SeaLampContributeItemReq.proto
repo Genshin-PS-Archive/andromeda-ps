@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+import "ItemParam.proto";
+
+message SeaLampContributeItemReq {
+   repeated ItemParam item_list = 1;
+}
+  

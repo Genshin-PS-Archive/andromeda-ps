@@ -3,6 +3,7 @@ syntax = "proto3";
 import "PlayerLocationInfo.proto";
 
 message ScenePlayerLocationNotify {
-	uint32 scene_id = 1;
-	repeated PlayerLocationInfo player_loc_list = 2;
+   uint32 scene_id = 1;
+   repeated PlayerLocationInfo player_loc_list = 2;
 }
+  

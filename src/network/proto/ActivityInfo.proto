@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+import "SeaLampActivityDetailInfo.proto";
+
+message ActivityInfo {
+   uint32 activity_id = 1;
+   uint32 schedule_id = 2;
+   uint32 begin_time = 3;
+   uint32 end_time = 4;
+   uint32 activity_type = 5;
+   bool is_play_open_anim = 6;
+   bool is_finished = 7;
+   bool is_starting = 8;
+   SeaLampActivityDetailInfo sam_lamp_info = 11;
+}
+  

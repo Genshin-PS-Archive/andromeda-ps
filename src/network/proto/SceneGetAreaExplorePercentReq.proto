@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message SceneGetAreaExplorePercentReq {
+   uint32 area_id = 1;
+}
+  

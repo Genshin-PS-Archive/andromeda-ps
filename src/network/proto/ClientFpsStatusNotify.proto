@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "ClientStatData.proto";
+
+message ClientFpsStatusNotify {
+   bool is_low_fps = 1;
+   float fps = 2;
+   repeated ClientStatData stat_list = 3;
+}
+  

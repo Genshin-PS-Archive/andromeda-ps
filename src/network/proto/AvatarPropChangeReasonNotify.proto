@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "PropChangeReason.proto";
+
+message AvatarPropChangeReasonNotify {
+   uint64 avatar_guid = 1;
+   uint32 prop_type = 2;
+   float old_value = 3;
+   float cur_value = 4;
+   PropChangeReason reason = 5;
+}
+  

@@ -17,8 +17,7 @@ export interface PlayerStoreNotify extends StoreWeightLimitNotify {
 }
 
 export interface StoreWeightLimitNotify {
-  // storeType: 'STORE_NONE' | 'STORE_PACK' | 'STORE_DEPOT'
-  storeType: 0 | 1 | 2;
+  storeType: 'STORE_NONE' | 'STORE_PACK' | 'STORE_DEPOT'
   weightLimit: number
 }
 
@@ -42,6 +41,7 @@ export interface AvatarInfo {
   skillDepotId: number
   lifeState: number
   avatarType: number,
+  fetterInfo: any;
   fightPropMap: { [prop: string]: number }
   propMap: {
     [prop: string]: {
@@ -152,12 +152,12 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Pl
 
   const playerStoreNotify = new Packet<PlayerStoreNotify>({
     itemList: [],
-    storeType: 1,
+    storeType: 'STORE_PACK',
     weightLimit: 10000,
   }, 'PlayerStoreNotify')
 
   const storeWeightLimit = new Packet<StoreWeightLimitNotify>({
-    storeType: 1,
+    storeType: 'STORE_PACK',
     weightLimit: 10000,
   }, 'StoreWeightLimitNotify')
 
@@ -179,12 +179,12 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Pl
   }, 'PlayerDataNotify')
 
   const avatarDataNotify = new Packet<AvatarDataNotify>({
-    avatarList: [player.avatars[0]],
+    avatarList: [],
     curAvatarTeamId: 1,
-    chooseAvatarGuid: player.avatars[1].guid,
+    chooseAvatarGuid: player.avatars[1].avatarInfo.guid,
     avatarTeamMap: {
       '1': {
-        avatarGuidList: [player.avatars[1].guid],
+        avatarGuidList: [player.avatars[1].avatarInfo.guid],
         teamName: "Andromeda PS",
       }
     },
@@ -209,10 +209,9 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Pl
   await playerDataNotify.send(host, client)
   await avatarDataNotify.send(host, client)
   
-  // lazy fix
   Promise.all(player.avatars.map(avatar => {
     return new Packet({
-      avatar,
+      avatar: avatar.avatarInfo,
       isInTeam: true,
     }, 'AvatarAddNotify').send(host, client)
   }))

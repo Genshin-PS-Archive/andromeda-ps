@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+import "MapMarkPoint.proto";
+
+message AllMarkPointNotify {
+   repeated MapMarkPoint mark_list = 1;
+}
+  

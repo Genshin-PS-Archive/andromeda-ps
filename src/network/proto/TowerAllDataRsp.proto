@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+import "TowerFloorRecord.proto";
+import "TowerCurLevelRecord.proto";
+
+message TowerAllDataRsp {
+   uint32 tower_schedule_id = 1;
+   repeated TowerFloorRecord tower_floor_record_list = 2;
+   uint32 daily_floor_id = 3;
+   uint32 daily_level_index = 4;
+   TowerCurLevelRecord cur_level_record = 5;
+   uint32 next_schedule_change_time = 6;
+   map<uint32, uint32> floor_open_time_map = 7;
+   int32 retcode = 8;
+}
+  

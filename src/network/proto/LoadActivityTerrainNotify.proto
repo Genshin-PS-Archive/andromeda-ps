@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message LoadActivityTerrainNotify {
+   uint32 activity_id = 1;
+}
+  

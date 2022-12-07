@@ -3,6 +3,7 @@ syntax = "proto3";
 import "AvatarInfo.proto";
 
 message AvatarAddNotify {
-  AvatarInfo avatar = 1;
-  bool is_in_tem = 2;
+   AvatarInfo avatar = 1;
+   bool is_in_team = 2;
 }
+  

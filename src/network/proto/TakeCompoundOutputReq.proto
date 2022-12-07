@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message TakeCompoundOutputReq {
+   uint32 compound_id = 1;
+}
+  

@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+enum TowerLevelEndNotifyContinueStateType {
+   CONTINUE_STATE_CAN_NOT_CONTINUE = 0;
+   CONTINUE_STATE_CAN_ENTER_NEXT_LEVEL = 1;
+   CONTINUE_STATE_CAN_ENTER_NEXT_FLOOR = 2;
+}
+  

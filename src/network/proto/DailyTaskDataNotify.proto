@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+message DailyTaskDataNotify {
+   uint32 score_reward_id = 3;
+   bool is_taken_score_reward = 4;
+   uint32 finished_num = 5;
+}
+  

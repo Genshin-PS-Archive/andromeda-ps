@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+message ResVersionConfig {
+   uint32 version = 1;
+   bool relogin = 2;
+   string md5 = 3;
+   string release_total_size = 4;
+}
+  

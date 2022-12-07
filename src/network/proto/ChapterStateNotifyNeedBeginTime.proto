@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message ChapterStateNotifyNeedBeginTime {
+   bool is_limit = 1;
+   uint32 config_need_begin_time = 2;
+}
+  

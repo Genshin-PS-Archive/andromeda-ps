@@ -3,5 +3,6 @@ syntax = "proto3";
 import "ScenePlayerInfo.proto";
 
 message ScenePlayerInfoNotify {
-	repeated ScenePlayerInfo player_info_list = 1;
+   repeated ScenePlayerInfo player_info_list = 1;
 }
+  

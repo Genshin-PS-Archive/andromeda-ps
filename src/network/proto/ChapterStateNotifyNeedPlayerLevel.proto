@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message ChapterStateNotifyNeedPlayerLevel {
+   bool is_limit = 1;
+   uint32 config_need_player_level = 2;
+}
+  

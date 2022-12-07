@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message WatcherAllDataNotify {
+   repeated uint32 watcher_list = 1;
+}
+  

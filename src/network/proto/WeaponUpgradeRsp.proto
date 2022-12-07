@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+message WeaponUpgradeRsp {
+   int32 retcode = 1;
+   uint64 target_weapon_guid = 2;
+   uint32 old_level = 3;
+   uint32 cur_level = 4;
+}
+  

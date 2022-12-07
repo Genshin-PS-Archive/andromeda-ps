@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+import "ClientMassiveEntity.proto";
+
+message DestroyMassiveEntityNotify {
+   repeated ClientMassiveEntity massive_entity_list = 1;
+}
+  

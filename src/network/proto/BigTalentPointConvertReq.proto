@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message BigTalentPointConvertReq {
+   uint64 avatar_guid = 1;
+   repeated uint64 item_guid_list = 2;
+}
+  

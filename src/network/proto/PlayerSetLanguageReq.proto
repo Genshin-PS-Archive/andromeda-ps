@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message PlayerSetLanguageReq {
+   uint32 language_type = 1;
+}
+  

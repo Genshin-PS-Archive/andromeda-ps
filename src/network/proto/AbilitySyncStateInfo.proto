@@ -1,12 +1,13 @@
 syntax = "proto3";
 
+import "AbilityScalarValueEntry.proto";
 import "AbilityAppliedAbility.proto";
 import "AbilityAppliedModifier.proto";
-import "AbilityScalarValueEntry.proto";
 
 message AbilitySyncStateInfo {
-	bool is_inited = 1;
-	repeated AbilityScalarValueEntry dynamic_value_map = 2;
-	repeated AbilityAppliedAbility applied_abilities = 3;
-	repeated AbilityAppliedModifier applied_modifiers = 4;
+   bool is_inited = 1;
+   repeated AbilityScalarValueEntry dynamic_value_map = 2;
+   repeated AbilityAppliedAbility applied_abilities = 3;
+   repeated AbilityAppliedModifier applied_modifiers = 4;
 }
+  

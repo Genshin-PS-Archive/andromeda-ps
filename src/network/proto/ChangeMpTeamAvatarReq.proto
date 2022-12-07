@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message ChangeMpTeamAvatarReq {
+   repeated uint64 avatar_guid_list = 1;
+   uint64 cur_avatar_guid = 2;
+}
+  

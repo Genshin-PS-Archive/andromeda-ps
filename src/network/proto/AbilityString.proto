@@ -1,9 +1,7 @@
 syntax = "proto3";
 
-
 message AbilityString {
-	oneof Type {
-		string str = 1;
-		uint32 hash = 2;
-	}
+   string str = 1;
+   uint32 hash = 2;
 }
+  

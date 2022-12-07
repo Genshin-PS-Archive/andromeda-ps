@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "DungeonCandidateTeamAvatar.proto";
+
+message DungeonCandidateTeamInfoNotify {
+   uint32 dungeon_id = 1;
+   repeated DungeonCandidateTeamAvatar avatar_list = 2;
+   repeated uint32 ready_player_uid = 3;
+}
+  

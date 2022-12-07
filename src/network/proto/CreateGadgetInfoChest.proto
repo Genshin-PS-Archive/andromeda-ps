@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message CreateGadgetInfoChest {
+   uint32 chest_drop_id = 1;
+   bool is_show_cutscene = 2;
+}
+  

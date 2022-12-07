@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message RefreshBackgroundAvatarRsp {
+   int32 retcode = 1;
+   map<uint64, uint32> hp_full_time_map = 2;
+}
+  

@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+message SeaLampFlyLampReq {
+   uint32 item_id = 1;
+   string wish_text = 2;
+   uint32 item_num = 3;
+}
+  

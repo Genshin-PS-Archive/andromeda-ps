@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "ForwardType.proto";
+import "EvtBeingHitInfo.proto";
+
+message EvtBeingHitNotify {
+   ForwardType forward_type = 1;
+   EvtBeingHitInfo being_hit_info = 2;
+}
+  

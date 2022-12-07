@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "Vector.proto";
+
+message EvtAvatarSitDownNotify {
+   uint32 entity_id = 1;
+   Vector position = 2;
+}
+  

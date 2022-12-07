@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+message DungeonChallengeFinishNotify {
+   uint32 challenge_index = 1;
+   bool is_success = 2;
+   bool is_new_record = 3;
+   uint32 challenge_record_type = 4;
+   uint32 current_value = 5;
+}
+  

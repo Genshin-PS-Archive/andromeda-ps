@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "GadgetBornType.proto";
+import "CreateGadgetInfoChest.proto";
+
+message CreateGadgetInfo {
+   GadgetBornType born_type = 1;
+   CreateGadgetInfoChest chest = 2;
+}
+  

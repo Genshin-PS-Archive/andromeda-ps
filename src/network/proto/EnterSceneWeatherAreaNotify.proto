@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message EnterSceneWeatherAreaNotify {
+   uint32 weather_gadget_id = 1;
+}
+  

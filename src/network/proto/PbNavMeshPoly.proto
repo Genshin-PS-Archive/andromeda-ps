@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message PbNavMeshPoly {
+   repeated int32 vects = 1;
+   repeated enum edge_types = 2;
+}
+  

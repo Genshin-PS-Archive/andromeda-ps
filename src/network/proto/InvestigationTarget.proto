@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "InvestigationTargetState.proto";
+
+message InvestigationTarget {
+   uint32 quest_id = 1;
+   uint32 investigation_id = 2;
+   InvestigationTargetState state = 3;
+}
+  

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "PropChangeReason.proto";
+
+message EntityFightPropChangeReasonNotify {
+   uint32 entity_id = 1;
+   uint32 prop_type = 2;
+   float prop_delta = 3;
+   PropChangeReason reason = 4;
+   repeated uint32 param_list = 5;
+}
+  

@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+message BossChestInfo {
+   uint32 monster_config_id = 1;
+   uint32 world_resin = 2;
+   repeated uint32 remain_uid_list = 3;
+   repeated uint32 qualify_uid_list = 4;
+}
+  

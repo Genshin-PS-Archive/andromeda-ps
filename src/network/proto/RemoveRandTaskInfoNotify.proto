@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "RemoveRandTaskInfoNotifyFinishReason.proto";
+
+message RemoveRandTaskInfoNotify {
+   uint32 rand_task_id = 1;
+   bool is_succ = 2;
+   RemoveRandTaskInfoNotifyFinishReason reason = 3;
+}
+  

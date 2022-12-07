@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message SceneAvatarStaminaStepRsp {
+   int32 retcode = 1;
+}
+  
