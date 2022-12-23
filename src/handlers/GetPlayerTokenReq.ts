@@ -35,8 +35,8 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Ge
 
   const generator = new MT19937_64();
   generator.seed(BigInt(2));
-  const mtKey = Buffer.alloc(512);
-  for (let i = 0; i < 512; i += 8) {
+  const mtKey = Buffer.alloc(4096);
+  for (let i = 0; i < 4096; i += 8) {
     const val = generator.int64();
     mtKey.writeBigUInt64BE(val, i);
   }

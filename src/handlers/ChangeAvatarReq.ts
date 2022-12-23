@@ -14,51 +14,20 @@ export interface ChangeAvatarRsp {
 }
 
 export async function handle(host: number, client: ClientInfo, packet: Packet<ChangeAvatarReq>) {
-  const oldAvatar = player.currentAvatar
-
+  const oldGuid = player.currentTeam.currentAvatarGuid
+  const avatar = player.currentTeam.avatarEntities.find(avatar => avatar.sceneAvatarInfo.avatar.guid == packet.data.guid)!
+  player.curEntityId = avatar.entityId
   player.currentTeam.currentAvatarGuid = packet.data.guid
 
-  const newAvatar = player.currentAvatar
+  avatar.sceneAvatarInfo.motionInfo = player.motionInfo
 
   const sceneEntityDisappearNotify = new Packet({
-    entityList: [oldAvatar?.avatarInfo?.guid],
+    entityList: [oldGuid],
     disappearType: 3,
   }, 'SceneEntityDisappearNotify')
 
-  const entityId = 16777432 + newAvatar?.avatarInfo?.guid
-
   const sceneEntityAppearNotify = new Packet({
-    entityList: [
-      {
-        entityType: 1,
-        entityId,
-        motionInfo: player.motionInfo,
-        fightPropList: {},
-        propMap: {},
-        lifeState: 1,
-        avatar: {
-          ...newAvatar?.avatarInfo,
-          peerId: 1,
-          uid: player.uid,
-          equipIdList: [],
-          weapon: {
-            ...newAvatar?.weaponInfo,
-            entityId: 100663513,
-            gadgetId: Number(`500${newAvatar?.weaponInfo.itemId}`),
-            level: 90,
-            promoteLevel: 6,
-            abilityInfo: {},
-            affixMap: {},
-          },
-          reliquaryList: [],
-          inherentProudSkillList: [],
-          skillLevelMap: {},
-          proudSkillExtraLevelMap: {},
-          teamResonanceList: [],
-          bornTime: Date.now() / 1000,
-        }
-      }
-    ],
+    entityList: [avatar.sceneAvatarInfo],
     appearType: 1
   }, 'SceneEntityAppearNotify')
 
@@ -68,7 +37,6 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Ch
     skillId: packet.data.skillId,
   }, 'ChangeAvatarRsp')
 
-  player.curEntityId = entityId
 
   sceneEntityDisappearNotify.send(host, client)
   sceneEntityAppearNotify.send(host, client)

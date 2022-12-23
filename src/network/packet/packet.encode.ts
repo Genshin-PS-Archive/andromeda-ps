@@ -1,8 +1,8 @@
 import { key } from '../../handlers/GetPlayerTokenReq';
+import { xor } from './packet.xor';
+import { protobufEncode } from '../tools/protobuf.encode';
 
 import packetIds from '../packetIds.json'
-import protobufjs from 'protobufjs'
-import { xor } from './packet.xor';
 
 type CmdId = keyof typeof packetIds
 
@@ -10,9 +10,7 @@ export const findCmdIdByProtoName = (name: string) =>
   Object.keys(packetIds).find(key => packetIds[key as CmdId] === name) as unknown as number;
 
 export async function encodePacket(name: string, obj: any) {
-  const proto = await protobufjs.load(`src/network/proto/${name}.proto`)
-  const data = Buffer.from(proto.lookupTypeOrEnum(name).encode(obj).finish())
-
+  const data = await protobufEncode(name, obj)
   const packetID = findCmdIdByProtoName(name)
 
   const magic2 = Buffer.from('89AB', 'hex')

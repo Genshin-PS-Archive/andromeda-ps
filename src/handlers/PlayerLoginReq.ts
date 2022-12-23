@@ -192,9 +192,9 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Pl
   })
 
   const avatarDataNotify = new Packet<AvatarDataNotify>({
-    avatarList: [],
+    avatarList: player.avatars.map(avatar => avatar.avatarInfo),
     curAvatarTeamId: player.currentTeam.id,
-    chooseAvatarGuid: player.currentTeam.currentAvatarGuid,
+    chooseAvatarGuid: player.avatars.find(avatar => avatar.avatarInfo.avatarId === 10000005)?.avatarInfo?.guid,
     avatarTeamMap,
   }, 'AvatarDataNotify')
 
@@ -216,14 +216,6 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Pl
   await storeWeightLimit.send(host, client)
   await playerDataNotify.send(host, client)
   await avatarDataNotify.send(host, client)
-
-  Promise.all(player.avatars.map(avatar => {
-    return new Packet({
-      avatar: avatar.avatarInfo,
-      isInTeam: true,
-    }, 'AvatarAddNotify').send(host, client)
-  }))
-
   await playerEnterSceneNotify.send(host, client)
   await playerLoginRsp.send(host, client)
 }

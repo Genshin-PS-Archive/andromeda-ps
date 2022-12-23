@@ -118,11 +118,12 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Sc
   }, 'HostPlayerNotify')
 
   const playerEnterSceneInfoNotify = new Packet<PlayerEnterSceneInfoNotify>({
-    curAvatarEntityId: 16777432 + Number(player.currentTeam.currentAvatarGuid),
-    avatarEnterInfo: player.currentTeam.avatarGuidList.map((guid, index) => {
+    curAvatarEntityId: player.currentTeam.avatarEntities.find(avatar => avatar.sceneAvatarInfo.avatar.guid ==
+      player.currentTeam.currentAvatarGuid)!.entityId,
+    avatarEnterInfo: player.currentTeam.avatarEntities.map((avatar) => {
       return {
-        avatarGuid: guid,
-        avatarEntityId: 16777432 + Number(guid),
+        avatarGuid: avatar.sceneAvatarInfo.avatar.guid,
+        avatarEntityId: avatar.entityId,
         weaponGuid: "2664326143951285785",
         weaponEntityId: 100663513,
       }
@@ -141,12 +142,12 @@ export async function handle(host: number, client: ClientInfo, packet: Packet<Sc
   const sceneDataNotify = new Packet({}, 'SceneDataNotify')
 
   const sceneTeamUpdateNotify = new Packet<SceneTeamUpdateNotify>({
-    sceneTeamAvatarList: player.currentTeam.avatarGuidList.map((guid) => {
+    sceneTeamAvatarList: player.currentTeam.avatarEntities.map((avatar) => {
       return {
         playerUid: player.uid,
-        avatarGuid: guid,
+        avatarGuid: avatar.sceneAvatarInfo.avatar.guid,
         sceneId: player.sceneId,
-        entityId: 16777432 + Number(guid),
+        entityId: avatar.entityId,
       }
     }),
   }, 'SceneTeamUpdateNotify')

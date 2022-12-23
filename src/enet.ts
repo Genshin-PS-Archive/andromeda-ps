@@ -1,6 +1,6 @@
 import 'dotenv/config'
 
-import { enet_host_create, enet_host_service } from 'enet.js'
+import { EnetPacket, enet_host_create, enet_host_service } from 'enet.js'
 
 import { decodePacket } from './network/packet/packet.decode'
 import { xor } from './network/packet/packet.xor'
@@ -9,19 +9,10 @@ import { Packet } from './network/packet'
 import { key } from './handlers/GetPlayerTokenReq'
 import { Team } from './game/team'
 
-const teams = [new Team({
-  id: 1,
-  name: 'Andromeda',
-  avatarGuidList: [19, 17, 31],
-  currentAvatarGuid: 19,
-})]
-
 export const player = new Player({
   uid: 61,
   nickname: 'andromeda',
   sceneId: 3,
-  teams,
-  currentTeam: teams[0],
   motionInfo: { pos: { x: 0, y: 300, z: 0, }, rot: { y: 0 }, speed: {} }
 })
 
@@ -31,22 +22,31 @@ export function startEnet() {
 
   console.log(`Game server is running at port ${process.env.GAME_SERVER_PORT}`)
 
-  setInterval(async () => {
-    const enetPacket = enet_host_service(host)
-    if (!enetPacket || !enetPacket.data) {
-      return
-    }
+  setInterval(async () => handlePackets(host), 50)
+}
 
-    const data: Buffer = xor(enetPacket.data, key)
+const isValidPacket = (raw: Buffer) => raw.length > 5 && raw.readInt16BE(0) == 0x4567 &&
+  raw.readUInt16BE(raw.byteLength - 2) == 0x89ab
 
-    try {
-      const { name, protoBuf } = await decodePacket(data)
-      const packet = new Packet(protoBuf, name)
+export async function handlePackets(host: number) {
+  const enetPacket = enet_host_service(host)
+  if (!enetPacket || !enetPacket.data) {
+    return
+  }
 
-      console.log(`New packet received. [${name}]`)
+  const clientInfo = { ip: enetPacket.ip, host: enetPacket.host, port: enetPacket.port }
+  const data = xor(enetPacket.data, key)
 
-      await require(`./handlers/${name}`).handle(host,
-        { ip: enetPacket.ip, host: enetPacket.host, port: enetPacket.port }, packet)
-    } catch (ignore) { }
-  }, 100)
+  if (!isValidPacket(data)) {
+    return
+  }
+
+  try {
+    const { name, protoBuf } = await decodePacket(data)
+    const packet = new Packet(protoBuf, name)
+
+    console.log(`New packet received. [${name}]`)
+
+    await require(`./handlers/${name}`).handle(host, clientInfo, packet)
+  } catch (ignore) { }
 }

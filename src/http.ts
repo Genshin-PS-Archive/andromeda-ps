@@ -1,10 +1,11 @@
 import 'dotenv/config'
-
 import express from 'express'
 
-import protobufjs from 'protobufjs';
+import { protobufEncode } from './network/tools/protobuf.encode';
 
 const app = express()
+
+app.use(express.json())
 
 const account = {
   retcode: 0,
@@ -115,11 +116,7 @@ app.get('/query_cur_region', async (request, response) => {
     },
   }
 
-  const root = await protobufjs.load('src/network/proto/QueryCurrRegionHttpRsp.proto')
-  const message = root.lookupType('QueryCurrRegionHttpRsp')
-
-  const encoded = message.encode(queryCurRegion).finish()
-
+  const encoded = await protobufEncode('QueryCurrRegionHttpRsp', queryCurRegion)
   return response.send(Buffer.from(encoded).toString('base64'))
 })
 
@@ -148,17 +145,11 @@ app.get('/query_region_list', async (request, response) => {
     }),
   }
 
-  const root = await protobufjs.load('src/network/proto/QueryRegionListHttpRsp.proto')
-  const message = root.lookupType('QueryRegionListHttpRsp')
-
-  const encoded = message.encode(queryRegionList).finish()
-
+  const encoded = await protobufEncode('QueryRegionListHttpRsp', queryRegionList)
   return response.send(Buffer.from(encoded).toString('base64'))
 })
 
-app.use(express.json())
-
 export function startHttp() {
   app.listen(process.env.HTTP_SERVER_PORT,
-    () => console.log(`HTTP Server is running at port ${process.env.HTTP_SERVER_PORT}`))
+    () => console.log(`Http Server is running at port ${process.env.HTTP_SERVER_PORT}`))
 }
